@@ -4,6 +4,10 @@ A full-stack workout tracker with Passport authentication.
 
 Users can sign up, log in, and build a personal exercise list. Each account can only view and manage its own exercises.
 
+<img width="600" height="600" alt="Discipline,jpg" src="https://github.com/user-attachments/assets/c514d32a-d521-46a8-b163-548cc4c6e11b" />
+<img width="600" height="600" alt="Displine" src="https://github.com/user-attachments/assets/b987ce13-54c5-4f71-b984-7c45cacad906" />
+
+
 ## Features
 
 - Add exercises with a name, sets, and reps per set.
