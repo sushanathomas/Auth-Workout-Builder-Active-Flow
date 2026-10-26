@@ -254,6 +254,11 @@ input,
   text-decoration: underline;
 }
 
+.login-page h1,
+.login-page label {
+  color: white;
+}
+
 /* Media Query Tablet Screen */
 @media (max-width: 900px) {
   .workout-layout {
