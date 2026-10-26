@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Builder | Active Flow</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <main class="container">
+        <header class="workout-header">
+            <div>
+                <h1>Active Flow</h1>
+                <p>Your workout. Your pace.</p>
+            </div>
+
+            <a href="/logout" class="btn logout-button">Logout</a>
+        </header>
+
+        <div class="workout-layout">
+            <section class="workout-form-panel">
+                <h2>Build Your Workout</h2>
+                <p>Add an exercise to your personal list.</p>
+
+                <form action="/exercises" method="POST">
+                    <label for="name">Exercise name</label>
+                    <input type="text" id="name" name="name" placeholder="exercise name" required>
+
+                    <label for="sets">Sets</label>
+                    <input type="number" id="sets" name="sets" min="1" step="1" placeholder="sets" required>
+
+                    <label for="reps">Reps per set</label>
+                    <input type="number" id="reps" name="reps" min="1" step="1" placeholder="reps" required>
+
+                    <button type="submit">Add Exercise</button>
+                </form>
+            </section>
+
+            <section class="exercise-section">
+                <h2>My Exercises</h2>
+
+                <% if (exercises.length===0) { %>
+                    <p class="empty-message">
+                        Your workout is empty. Add your first exercise!
+                    </p>
+                    <% } %>
+
+                        <ul class="exercises">
+                            <% for (let i=0; i < exercises.length; i++) { %>
+                                <li class="exercise-card">
+                                    <h3>
+                                        <%= exercises[i].name %>
+                                    </h3>
+
+                                    <p>
+                                        <strong>
+                                            <%= exercises[i].sets %>
+                                        </strong> sets
+                                        &times;
+                                        <strong>
+                                            <%= exercises[i].reps %>
+                                        </strong> reps
+                                    </p>
+
+                                    <p class="exercise-status">
+                                        <%= exercises[i].completed ? 'Completed' : 'Not completed' %>
+                                    </p>
+
+                                    <div class="exercise-actions">
+                                        <button type="button" class="completed-button" data-id="<%= exercises[i]._id %>"
+                                            data-completed="<%= exercises[i].completed %>">
+                                            <%= exercises[i].completed ? 'Mark incomplete' : 'Mark complete' %>
+                                        </button>
+
+                                        <button type="button" class="delete-button" data-id="<%= exercises[i]._id %>">
+                                            Delete exercise
+                                        </button>
+                                    </div>
+                                </li>
+                                <% } %>
+                        </ul>
+            </section>
+        </div>
+    </main>
+
+    <script src="/main.js"></script>
+</body>
+
+</html>
